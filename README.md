@@ -12,7 +12,8 @@
 * Navigate to a directory of your choosing using the `cd` command
 * Run this command in your OS terminal: `git clone git@github.com:German-Cobian/Activities-List.git` to get a copy of the project
 * Navigate to the project's directory using the `cd` command
-* Run `npm start` to fire up the server
+* In the clone folder, run `npm install` and then `npm run build`
+* To fire up the server run `npm start`
 * Visit `http://localhost:8080/` in your browser to get into the app
 
 ## Built With
