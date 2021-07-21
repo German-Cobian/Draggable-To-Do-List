@@ -1,10 +1,8 @@
 import './style.css';
-
-const activities = [
-  { description: 'Un-clog the toilet', completed: false, index: 1 },
-  { description: 'Complain to the neighbor about his brats', completed: false, index: 3 },
-  { description: 'De-flea the dog', completed: true, index: 3 },
-];
+import { activities, activityReload } from './status-update';
+import {
+  dragstart, dragover, dragleave, drop, dragend,
+} from './drag-and-drop';
 
 // Section with heading and refresh
 const toDoList = () => {
@@ -41,14 +39,20 @@ const toDoList = () => {
   // Section that displays activities
   const renderList = (activity) => {
     const li = document.createElement('li');
+    li.classList.add('draggable'); // ft-2
+    li.setAttribute('activity', activity.index); // ft-2
+    li.draggable = true; // ft-2
 
     const div = document.createElement('div');
 
     const input = document.createElement('input');
+    input.classList.add('completed'); // ft-2
     input.type = 'checkbox';
     input.name = 'completed';
+    input.addEventListener('click', () => activityReload(activity, input.checked)); // ft-2
 
     const p = document.createElement('p');
+    p.classList.add('description'); // ft-2
     p.textContent = activity.description;
 
     div.appendChild(input);
@@ -59,13 +63,24 @@ const toDoList = () => {
     const i = document.createElement('i');
     i.classList.add('fas', 'fa-ellipsis-v');
 
+    // Event listeners for drag and drop functionality
+    li.addEventListener('dragstart', () => dragstart(li));
+    li.addEventListener('dragover', (e) => dragover(li, e));
+    li.addEventListener('dragleave', () => dragleave(li));
+    li.addEventListener('drop', () => {
+      drop(li);
+    });
+    li.addEventListener('dragend', () => {
+      dragend(li);
+    });
+
     li.appendChild(i);
 
     return li;
   };
 
   // Section to clear all completed activies
-  const completed = () => {
+  const clearCompleted = () => {
     const li = document.createElement('li');
 
     li.textContent = 'Clear all completed';
@@ -82,7 +97,7 @@ const toDoList = () => {
   activities.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   activities.forEach((activity) => ul.appendChild(renderList(activity)));
 
-  ul.appendChild(completed());
+  ul.appendChild(clearCompleted());
 };
 
 toDoList();
