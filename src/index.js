@@ -1,7 +1,8 @@
 import './style.css';
-import { activities, activityReload,  } from './status-update';
-import { dragstart, dragover, dragleave, drop, dragend, } from './drag-and-drop';
-
+import { activities, activityReload } from './status-update';
+import {
+  dragstart, dragover, dragleave, drop, dragend 
+} from './drag-and-drop';
 
 // Section with heading and refresh
 const toDoList = () => {
@@ -63,15 +64,15 @@ const toDoList = () => {
     i.classList.add('fas', 'fa-ellipsis-v');
 
     // Event listeners for drag and drop functionality
-    li.addEventListener('dragstart', () => dragstart(li));    // ft-2
-    li.addEventListener('dragover', (e) => dragover(li, e));  // ft-2
-    li.addEventListener('dragleave', () => dragleave(li));    // ft-2
-    li.addEventListener('drop', () => {                       // ft-2
-      drop(li);                                               // ft-2
+    li.addEventListener('dragstart', () => dragstart(li));
+    li.addEventListener('dragover', (e) => dragover(li, e));
+    li.addEventListener('dragleave', () => dragleave(li));
+    li.addEventListener('drop', () => {
+      drop(li);
     });
-    li.addEventListener('dragend', () => {                    // ft-2
-      dragend(li);                                            // ft-2
-    });                                                       // ft-2
+    li.addEventListener('dragend', () => {
+      dragend(li);
+    });
 
     li.appendChild(i);
 
