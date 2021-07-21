@@ -6,6 +6,15 @@
 
 ![to-do-list](https://user-images.githubusercontent.com/68709712/126507948-20a67a67-d15a-41bc-ab11-f2774647b43a.png)
 
+### Setup and Install
+
+* Open your terminal - Windows: `Win + R`, then type `cmd` | Mac: `Command + space`, then type `Terminal`
+* Navigate to a directory of your choosing using the `cd` command
+* Run this command in your OS terminal: `git clone git@github.com:German-Cobian/Activities-List.git` to get a copy of the project
+* Navigate to the project's directory using the `cd` command
+* Run `npm start` to fire up the server
+* Visit `http://localhost:8080/` in your browser to get into the app
+
 ## Built With
 
 * Semantic HTML
