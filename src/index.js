@@ -1,7 +1,7 @@
 import './style.css';
 import { activities, activityReload } from './status-update';
 import {
-  dragstart, dragover, dragleave, drop, dragend 
+  dragstart, dragover, dragleave, drop, dragend,
 } from './drag-and-drop';
 
 // Section with heading and refresh

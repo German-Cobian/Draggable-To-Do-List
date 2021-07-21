@@ -1,6 +1,6 @@
 /* eslint-disable import/no-mutable-exports */
 
-const activities = [
+let activities = [
   { description: 'Un-clog the toilet', completed: false, index: 1 },
   { description: 'Complain to the neighbor about his brats', completed: false, index: 3 },
   { description: 'De-flea the dog', completed: true, index: 3 },
