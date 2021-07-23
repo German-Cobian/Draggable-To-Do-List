@@ -1,11 +1,20 @@
 import './style.css';
-import { activities, activityReload } from './status-update';
+import {
+  activities,
+  loadActivitiesList,
+  newActivityDefine,
+  updateDoneActivity,
+  activityDescriptionEdit,
+  repopulateList,
+} from './status-update';
 import {
   dragstart, dragover, dragleave, drop, dragend,
 } from './drag-and-drop';
 
 // Section with heading and refresh
 const toDoList = () => {
+  const ul = document.querySelector('ul'); // ft-3
+
   const heading = () => {
     const li = document.createElement('li');
     li.id = 'todo-heading';
@@ -14,24 +23,12 @@ const toDoList = () => {
     const i = document.createElement('i');
     i.classList.add('fas', 'fa-sync-alt');
     i.id = 'refresh-icon';
+    i.addEventListener('click', () => {
+      window.location.reload()
+    });
 
     li.appendChild(h3);
     li.appendChild(i);
-
-    return li;
-  };
-
-  // Section where activities are inputed
-  const addActivity = () => {
-    const li = document.createElement('li');
-    li.id = 'new-activities';
-
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.placeholder = 'Add to your list...';
-    input.id = 'list-item';
-
-    li.appendChild(input);
 
     return li;
   };
@@ -49,19 +46,27 @@ const toDoList = () => {
     input.classList.add('completed'); // ft-2
     input.type = 'checkbox';
     input.name = 'completed';
-    input.addEventListener('click', () => activityReload(activity, input.checked)); // ft-2
+    input.addEventListener('click', () => updateDoneActivity(parseInt(li.getAttribute('activity'), 10), input.checked)); // ft-2 modify on ft-3
 
     const p = document.createElement('p');
     p.classList.add('description'); // ft-2
+    p.contentEditable = 'true'; // ft 3
     p.textContent = activity.description;
+    p.addEventListener('input', () => activityDescriptionEdit(parseInt(li.getAttribute('activity'), 10), p.textContent)); // ft 3
 
     div.appendChild(input);
     div.appendChild(p);
-
     li.appendChild(div);
 
     const i = document.createElement('i');
     i.classList.add('fas', 'fa-ellipsis-v');
+    // This functionality added in ft-3
+    i.addEventListener('click', () => {
+      ul.removeChild(li);
+      localStorage.clear();
+
+      repopulateList();
+    });
 
     // Event listeners for drag and drop functionality
     li.addEventListener('dragstart', () => dragstart(li));
@@ -79,6 +84,32 @@ const toDoList = () => {
     return li;
   };
 
+  // Section where activities are inputed
+  const addActivity = () => {
+    const li = document.createElement('li');
+    li.id = 'new-activities';
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.placeholder = 'Add to your list...';
+    input.id = 'list-item';
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        newActivityDefine(input.value);
+        ul.appendChild(renderList(activities[activities.length - 1]));
+
+        const clear = document.getElementById('clear');
+        ul.appendChild(clear);
+
+        input.value = '';
+      }
+    });
+
+    li.appendChild(input);
+
+    return li;
+  };
+
   // Section to clear all completed activies
   const clearCompleted = () => {
     const li = document.createElement('li');
@@ -86,10 +117,25 @@ const toDoList = () => {
     li.textContent = 'Clear all completed';
     li.id = 'clear';
 
+    li.addEventListener('click', () => {
+      const draggables = [...document.querySelectorAll('.draggable')];
+
+      const incompleteActivities = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
+
+      draggables.forEach((draggable) => ul.removeChild(draggable));
+
+      incompleteActivities.forEach((item) => ul.appendChild(item));
+
+      localStorage.clear();
+
+      repopulateList();
+
+      const clear = document.getElementById('clear');
+      ul.appendChild(clear);
+    });
+
     return li;
   };
-
-  const ul = document.querySelector('ul');
 
   ul.appendChild(heading());
   ul.appendChild(addActivity());
@@ -100,4 +146,4 @@ const toDoList = () => {
   ul.appendChild(clearCompleted());
 };
 
-toDoList();
+toDoList(loadActivitiesList);
