@@ -146,4 +146,4 @@ const toDoList = () => {
   ul.appendChild(clearCompleted());
 };
 
-toDoList(loadActivitiesList);
+toDoList(loadActivitiesList());
