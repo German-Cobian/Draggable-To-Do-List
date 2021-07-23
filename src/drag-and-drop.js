@@ -1,5 +1,5 @@
 import {
-  emptyList, inputActivity, archiveActivities,
+  repopulateList,
 } from './status-update';
 
 // Section relating to drag and drop functionality
@@ -20,25 +20,7 @@ const drop = (element) => {
   const skateover = document.querySelector('.skateover');
   element.before(skateover);
 
-  const draggables = document.querySelectorAll('.draggable');
-
-  let i = 0;
-  draggables.forEach((draggable) => {
-    draggable.setAttribute('activity', i);
-    i += 1;
-  });
-
-  emptyList();
-  draggables.forEach((draggable) => {
-    const description = draggable.getElementsByClassName('description')[0].textContent;
-    const completed = draggable.getElementsByClassName('completed')[0].checked;
-    const index = draggable.getAttribute('activity');
-
-    inputActivity(description, completed, index);
-
-    archiveActivities();
-  });
-
+  repopulateList();
   element.classList.remove('dragover');
 };
 

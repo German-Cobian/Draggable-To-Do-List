@@ -1,10 +1,15 @@
 /* eslint-disable import/no-mutable-exports */
 
-let activities = [
-  { description: 'Un-clog the toilet', completed: false, index: 1 },
-  { description: 'Complain to the neighbor about his brats', completed: false, index: 3 },
-  { description: 'De-flea the dog', completed: true, index: 3 },
-];
+let activities = [];
+
+const loadActivitiesList = () => {
+  let loadActivities = JSON.parse(localStorage.getItem('activities'));
+  if (loadActivities == null) {
+    loadActivities = [];
+  }
+  activities = loadActivities;
+  return activities;
+};
 
 const emptyList = () => {
   activities = [];
@@ -19,6 +24,50 @@ const archiveActivities = () => {
   localStorage.setItem('activities', jsonActivities);
 };
 
+const newActivityDefine = (description) => {
+  let index = 0;
+
+  if (activities.length > 0) {
+    index = activities[activities.length - 1].index + 1;
+  }
+
+  inputActivity(description, false, index);
+  archiveActivities();
+};
+
+const updateDoneActivity = (index, check) => {
+  const doneActivities = activities.find((a) => a.index === index);
+  doneActivities.completed = check;
+  archiveActivities();
+};
+
+const activityDescriptionEdit = (index, description) => {
+  const descriptionToEdit = activities.find((a) => a.index === index);
+  descriptionToEdit.description = description;
+  archiveActivities();
+};
+
+const repopulateList = () => {
+  const draggables = document.querySelectorAll('.draggable');
+
+  let i = 0;
+  draggables.forEach((draggable) => {
+    draggable.setAttribute('activity', i);
+    i += 1;
+  });
+
+  emptyList();
+
+  draggables.forEach((draggable) => {
+    const description = draggable.getElementsByClassName('description')[0].textContent;
+    const completed = draggable.getElementsByClassName('completed')[0].checked;
+    const index = draggable.getAttribute('activity');
+
+    inputActivity(description, completed, index);
+    archiveActivities();
+  });
+};
+
 const activityReload = (activity, check) => {
   const specificActivity = activities.find((act) => act.description === activity.description);
 
@@ -29,7 +78,16 @@ const activityReload = (activity, check) => {
 };
 
 export {
-  activities, emptyList, inputActivity, archiveActivities, activityReload,
+  activities,
+  loadActivitiesList,
+  emptyList,
+  inputActivity,
+  archiveActivities,
+  newActivityDefine,
+  updateDoneActivity,
+  activityDescriptionEdit,
+  repopulateList,
+  activityReload,
 };
 
 /* eslint-enable import/no-mutable-exports */

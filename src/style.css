@@ -32,7 +32,7 @@ ul {
   justify-content: space-around;
   width: 45%;
   margin: 0 auto;
-  height: 97vh;
+  height: auto;
   border: 1px solid black;
   border-radius: 5px;
   background-color: white;
