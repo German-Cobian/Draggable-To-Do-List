@@ -24,7 +24,7 @@ const toDoList = () => {
     i.classList.add('fas', 'fa-sync-alt');
     i.id = 'refresh-icon';
     i.addEventListener('click', () => {
-      window.location.reload()
+      window.location.reload();
     });
 
     li.appendChild(h3);

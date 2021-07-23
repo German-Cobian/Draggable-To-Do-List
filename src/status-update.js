@@ -36,15 +36,15 @@ const newActivityDefine = (description) => {
 };
 
 const updateDoneActivity = (index, check) => {
- const doneActivities = activities.find((a) => a.index === index);
- doneActivities.completed = check;
- archiveActivities();
+  const doneActivities = activities.find((a) => a.index === index);
+  doneActivities.completed = check;
+  archiveActivities();
 };
 
 const activityDescriptionEdit = (index, description) => {
- const descriptionToEdit = activities.find((a) => a.index === index);
- descriptionToEdit.description = description;
- archiveActivities();
+  const descriptionToEdit = activities.find((a) => a.index === index);
+  descriptionToEdit.description = description;
+  archiveActivities();
 };
 
 const repopulateList = () => {
@@ -59,12 +59,12 @@ const repopulateList = () => {
   emptyList();
 
   draggables.forEach((draggable) => {
-  const description = draggable.getElementsByClassName('description')[0].textContent;
-  const completed = draggable.getElementsByClassName('completed')[0].checked;
-  const index = draggable.getAttribute('activity');
+    const description = draggable.getElementsByClassName('description')[0].textContent;
+    const completed = draggable.getElementsByClassName('completed')[0].checked;
+    const index = draggable.getAttribute('activity');
 
-  inputActivity(description, completed, index);
-  archiveActivities();
+    inputActivity(description, completed, index);
+    archiveActivities();
   });
 };
 
