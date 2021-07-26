@@ -37,7 +37,7 @@ const toDoList = () => {
   // Section that displays activities
   const renderList = (activity) => {
     const li = document.createElement('li');
-    li.classList.add('disposition-row')
+    li.classList.add('disposition-row');
     li.classList.add('draggable'); // ft-2
     li.setAttribute('activity', activity.index); // ft-2
     li.draggable = true; // ft-2
