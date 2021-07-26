@@ -11,7 +11,7 @@ const loadActivitiesList = () => {
   return activities;
 };
 
-const emptyList = () => {
+const listEmpty = () => {
   activities = [];
 };
 
@@ -56,7 +56,7 @@ const repopulateList = () => {
     i += 1;
   });
 
-  emptyList();
+  listEmpty();
 
   draggables.forEach((draggable) => {
     const description = draggable.getElementsByClassName('description')[0].textContent;
@@ -80,7 +80,7 @@ const activityReload = (activity, check) => {
 export {
   activities,
   loadActivitiesList,
-  emptyList,
+  listEmpty,
   inputActivity,
   archiveActivities,
   newActivityDefine,
