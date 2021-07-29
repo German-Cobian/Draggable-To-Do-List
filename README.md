@@ -6,6 +6,17 @@
 
 ![to-do-list](https://user-images.githubusercontent.com/68709712/126507948-20a67a67-d15a-41bc-ab11-f2774647b43a.png)
 
+Features:
+
+* Add tasks through the input field
+* Drag and drop to reprioritize tasks
+* Check tasks off as completed
+* Delete all tasks checked as completed
+
+### Live link
+
+https://german-cobian.github.io/Activities-List/
+
 ### Setup and Install
 
 * Open your terminal - Windows: `Win + R`, then type `cmd` | Mac: `Command + space`, then type `Terminal`

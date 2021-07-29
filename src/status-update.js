@@ -16,7 +16,11 @@ const emptyList = () => {
 };
 
 const inputActivity = (description, completed, index) => {
-  activities.push({ description, completed, index: parseInt(index, 10) });
+  const newObj = { description, completed, index };
+
+  activities.push(newObj);
+
+  return activities[activities.length - 1];
 };
 
 const archiveActivities = () => {

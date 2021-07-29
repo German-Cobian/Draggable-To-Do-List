@@ -2,6 +2,21 @@ import {
   repopulateList,
 } from './status-update';
 
+const completedClear = (ul) => {
+  const draggables = [...document.querySelectorAll('.draggable')];
+
+  const newList = draggables.filter((draggable) => draggable.getElementsByClassName('completed')[0].checked === false);
+
+  draggables.forEach((draggable) => ul.removeChild(draggable));
+
+  newList.forEach((item) => ul.appendChild(item));
+
+  repopulateList();
+
+  const clear = document.getElementById('clear');
+  ul.appendChild(clear);
+};
+
 // Section relating to drag and drop functionality
 const dragstart = (element) => {
   element.classList.add('skateover');
@@ -29,5 +44,5 @@ const dragend = (element) => {
 };
 
 export {
-  dragstart, dragover, dragleave, drop, dragend,
+  dragstart, dragover, dragleave, drop, dragend, completedClear,
 };
