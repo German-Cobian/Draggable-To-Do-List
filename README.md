@@ -6,6 +6,19 @@
 
 ![to-do-list](https://user-images.githubusercontent.com/68709712/126507948-20a67a67-d15a-41bc-ab11-f2774647b43a.png)
 
+Features:
+
+* Add tasks through the input field
+* Drag and drop to reprioritize tasks
+* Check tasks off as completed
+* Delete all tasks checked as completed
+
+
+### Live link
+
+https://german-cobian.github.io/Activities-List/
+
+
 ### Setup and Install
 
 * Open your terminal - Windows: `Win + R`, then type `cmd` | Mac: `Command + space`, then type `Terminal`
@@ -15,6 +28,7 @@
 * In the clone folder, run `npm install` and then `npm run build`
 * To fire up the server run `npm start`
 * Visit `http://localhost:8080/` in your browser to get into the app
+
 
 ## Built With
 
@@ -32,20 +46,24 @@
 * Twitter: [@GermanCobian1](https://twitter.com/GermanCobian1)
 * LinkedIn: [@German Cobian](https://www.linkedin.com/in/german-cobian/)
 
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the [issues page](../../issues/).
 
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
+
 
 ## Acknowledgments
 
 - Microverse
 - Code reviewer(s).
+
 
 ## 📝 License
 
