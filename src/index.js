@@ -8,6 +8,8 @@ const activities = [
 
 // Section with heading and refresh
 const toDoList = () => {
+  
+  
   const heading = () => {
     const li = document.createElement('li');
     li.id = 'todo-heading';
