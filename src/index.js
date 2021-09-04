@@ -23,7 +23,7 @@ const toDoList = () => {
     const i = document.createElement('i');
     i.classList.add('fas', 'fa-sync-alt');
     i.id = 'refresh-icon';
-    i.addEventListener('click', () => {
+    i.addEventListener('click', () => { // ft-3
       window.location.reload();
     });
 
