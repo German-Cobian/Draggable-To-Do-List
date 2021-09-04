@@ -23,7 +23,7 @@ const activityReload = (activity, check) => {
   const specificActivity = activities.find((act) => act.description === activity.description);
 
   specificActivity.completed = check;
-
+  
   activity.completed = check;
   archiveActivities();
 };
