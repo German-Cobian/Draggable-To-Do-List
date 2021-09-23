@@ -1,5 +1,5 @@
 import './style.css';
-import { activities, activityReload } from './status-update';
+import { activities, updateCheckboxStatus } from './status-update';
 import {
   dragstart, dragover, dragleave, drop, dragend,
 } from './drag-and-drop';
@@ -49,7 +49,8 @@ const toDoList = () => {
     input.classList.add('completed'); // ft-2
     input.type = 'checkbox';
     input.name = 'completed';
-    input.addEventListener('click', () => activityReload(activity, input.checked)); // ft-2
+    input.checked = activity.completed;
+    input.addEventListener('click', () => updateCheckboxStatus(activity, input.checked)); // ft-2
 
     const p = document.createElement('p');
     p.classList.add('description'); // ft-2

@@ -6,12 +6,12 @@ let activities = [
   { description: 'De-flea the dog', completed: true, index: 3 },
 ];
 
-const emptyList = () => {
-  activities = [];
-};
-
 const inputActivity = (description, completed, index) => {
   activities.push({ description, completed, index: parseInt(index, 10) });
+};
+
+const emptyList = () => {
+  activities = [];
 };
 
 const archiveActivities = () => {
@@ -19,17 +19,16 @@ const archiveActivities = () => {
   localStorage.setItem('activities', jsonActivities);
 };
 
-const activityReload = (activity, check) => {
-  const specificActivity = activities.find((act) => act.description === activity.description);
+const updateCheckboxStatus = (activity, check) => {
+  const specificActivity = activities.find((a) => a.description === activity.description);
 
   specificActivity.completed = check;
   
-  activity.completed = check;
   archiveActivities();
 };
 
 export {
-  activities, emptyList, inputActivity, archiveActivities, activityReload,
+  activities, inputActivity, emptyList, archiveActivities, updateCheckboxStatus,
 };
 
 /* eslint-enable import/no-mutable-exports */
