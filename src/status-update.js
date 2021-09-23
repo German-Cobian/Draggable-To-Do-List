@@ -68,6 +68,7 @@ const repopulateList = () => {
   });
 };
 
+// This function was discarded from use
 const activityReload = (activity, check) => {
   const specificActivity = activities.find((act) => act.description === activity.description);
 
