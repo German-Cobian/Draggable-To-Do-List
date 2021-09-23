@@ -2,7 +2,20 @@
 
 let activities = [];
 
-const loadActivitiesList = () => {
+const inputActivity = (description, completed, index) => {
+  activities.push({ description, completed, index: parseInt(index, 10) });
+};
+
+const emptyList = () => {
+  activities = [];
+};
+
+const archiveActivities = () => {
+  const jsonActivities = JSON.stringify(activities);
+  localStorage.setItem('activities', jsonActivities);
+};
+
+const loadArchivedActivities = () => {
   let loadActivities = JSON.parse(localStorage.getItem('activities'));
   if (loadActivities == null) {
     loadActivities = [];
@@ -11,20 +24,7 @@ const loadActivitiesList = () => {
   return activities;
 };
 
-const emptyList = () => {
-  activities = [];
-};
-
-const inputActivity = (description, completed, index) => {
-  activities.push({ description, completed, index: parseInt(index, 10) });
-};
-
-const archiveActivities = () => {
-  const jsonActivities = JSON.stringify(activities);
-  localStorage.setItem('activities', jsonActivities);
-};
-
-const newActivityDefine = (description) => {
+const assignIndexToActivity = (description) => {
   let index = 0;
 
   if (activities.length > 0) {
@@ -35,13 +35,13 @@ const newActivityDefine = (description) => {
   archiveActivities();
 };
 
-const updateDoneActivity = (index, check) => {
+const updateCheckboxStatus = (index, check) => {
   const doneActivities = activities.find((a) => a.index === index);
   doneActivities.completed = check;
   archiveActivities();
 };
 
-const activityDescriptionEdit = (index, description) => {
+const editActivityDescription = (index, description) => {
   const descriptionToEdit = activities.find((a) => a.index === index);
   descriptionToEdit.description = description;
   archiveActivities();
@@ -68,27 +68,17 @@ const repopulateList = () => {
   });
 };
 
-// This function was discarded from use
-const activityReload = (activity, check) => {
-  const specificActivity = activities.find((act) => act.description === activity.description);
-
-  specificActivity.completed = check;
-
-  activity.completed = check;
-  archiveActivities();
-};
-
 export {
   activities,
-  loadActivitiesList,
-  emptyList,
   inputActivity,
+  emptyList,
   archiveActivities,
-  newActivityDefine,
-  updateDoneActivity,
-  activityDescriptionEdit,
+  loadArchivedActivities,
+  assignIndexToActivity,
+  updateCheckboxStatus,
+  editActivityDescription,
   repopulateList,
-  activityReload,
+  
 };
 
 /* eslint-enable import/no-mutable-exports */

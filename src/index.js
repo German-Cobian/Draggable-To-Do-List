@@ -1,10 +1,10 @@
 import './style.css';
 import {
   activities,
-  loadActivitiesList,
-  newActivityDefine,
-  updateDoneActivity,
-  activityDescriptionEdit,
+  loadArchivedActivities,
+  assignIndexToActivity,
+  updateCheckboxStatus,
+  editActivityDescription,
   repopulateList,
 } from './status-update';
 import {
@@ -13,6 +13,7 @@ import {
 
 // Section with heading and refresh
 const toDoList = () => {
+  loadArchivedActivities()
   const ul = document.querySelector('ul'); // ft-3
 
   const heading = () => {
@@ -46,13 +47,14 @@ const toDoList = () => {
     input.classList.add('completed'); // ft-2
     input.type = 'checkbox';
     input.name = 'completed';
-    input.addEventListener('click', () => updateDoneActivity(parseInt(li.getAttribute('activity'), 10), input.checked)); // ft-2 modify on ft-3
+    input.checked = activity.completed;
+    input.addEventListener('click', () => updateCheckboxStatus(parseInt(li.getAttribute('activity'), 10), input.checked)); // ft-2 modify on ft-3
 
     const p = document.createElement('p');
     p.classList.add('description'); // ft-2
     p.contentEditable = 'true'; // ft 3
     p.textContent = activity.description;
-    p.addEventListener('input', () => activityDescriptionEdit(parseInt(li.getAttribute('activity'), 10), p.textContent)); // ft 3
+    p.addEventListener('input', () => editActivityDescription(parseInt(li.getAttribute('activity'), 10), p.textContent)); // ft 3
 
     div.appendChild(input);
     div.appendChild(p);
@@ -95,7 +97,7 @@ const toDoList = () => {
     input.id = 'list-item';
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
-        newActivityDefine(input.value);
+        assignIndexToActivity(input.value);
         ul.appendChild(renderList(activities[activities.length - 1]));
 
         const clear = document.getElementById('clear');
@@ -146,4 +148,4 @@ const toDoList = () => {
   ul.appendChild(clearCompleted());
 };
 
-toDoList(loadActivitiesList());
+toDoList();
