@@ -49,7 +49,6 @@ const toDoList = () => {
     input.classList.add('completed'); // ft-2
     input.type = 'checkbox';
     input.name = 'completed';
-    input.checked = activity.completed;
     input.addEventListener('click', () => updateCheckboxStatus(activity, input.checked)); // ft-2
 
     const p = document.createElement('p');
