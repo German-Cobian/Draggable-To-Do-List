@@ -6,6 +6,10 @@ body {
   background-color: rgb(236, 234, 231);
 }
 
+section {
+  height: auto;
+}
+
 .to-do-list {
   margin-top: 15px;
 }

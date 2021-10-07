@@ -1,11 +1,14 @@
 import './style.css';
-import { activities, updateCheckboxStatus } from './status-update';
+import { activities, loadArchivedActivities, updateCheckboxStatus } from './status-update';
 import {
   dragstart, dragover, dragleave, drop, dragend,
 } from './drag-and-drop';
 
-// Section with heading and refresh
+
 const toDoList = () => {
+  loadArchivedActivities();
+
+  // Section with heading and refresh
   const heading = () => {
     const li = document.createElement('li');
     li.id = 'todo-heading';
@@ -49,6 +52,7 @@ const toDoList = () => {
     input.classList.add('completed'); // ft-2
     input.type = 'checkbox';
     input.name = 'completed';
+    input.checked = activity.completed;
     input.addEventListener('click', () => updateCheckboxStatus(activity, input.checked)); // ft-2
 
     const p = document.createElement('p');
