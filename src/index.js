@@ -67,7 +67,7 @@ const toDoList = () => {
   };
 
   // Section to clear all completed activies
-  const completed = () => {
+  const clearCompleted = () => {
     const li = document.createElement('li');
 
     li.textContent = 'Clear all completed';
@@ -84,7 +84,7 @@ const toDoList = () => {
   activities.sort((a, b) => ((a.index > b.index) ? 1 : -1));
   activities.forEach((activity) => ul.appendChild(renderList(activity)));
 
-  ul.appendChild(completed());
+  ul.appendChild(clearCompleted());
 };
 
 toDoList();
