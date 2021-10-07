@@ -100,6 +100,7 @@ const toDoList = () => {
         assignIndexToActivity(input.value);
         ul.appendChild(renderList(activities[activities.length - 1]));
 
+        // Fixes Clear all completed section to the bottom of the pages
         const clear = document.getElementById('clear');
         ul.appendChild(clear);
 
@@ -132,6 +133,7 @@ const toDoList = () => {
 
       repopulateList();
 
+      // Fixes Clear all completed section to the bottom of the pages
       const clear = document.getElementById('clear');
       ul.appendChild(clear);
     });
