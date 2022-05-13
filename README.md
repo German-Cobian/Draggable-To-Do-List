@@ -8,19 +8,19 @@ A Javascript app that allows the user to input, through an input field, his/her 
 
 ... view the inputted tasks as a list,
 
-![Inputted tasks](/assets/Inputted-tasks.png?raw=true "Inputted tasks")
+![Inputted tasks](/src/assets/Inputted-tasks.png?raw=true "Inputted tasks")
 
 ... reprioritize the tasks as needed, using the drag-and-drop functionality,
 
-![Rearranged tasks](/assets/Rearranged-tasks.png?raw=true "Rearranged tasks")
+![Rearranged tasks](/src/assets/Rearranged-tasks.png?raw=true "Rearranged tasks")
 
 ... check them off as completed when done, 
 
-![Completed tasks](/assets/Completed-tasks.png?raw=true "Completed tasks")
+![Completed tasks](/src/assets/Completed-tasks.png?raw=true "Completed tasks")
 
 ... and eliminate from list all the activities checked-off as completed.
 
-![Clear tasks completed](/assets/Clear-off-completed.png?raw=true "Clear tasks completed")
+![Clear tasks completed](/src/assets/Clear-off-completed.png?raw=true "Clear tasks completed")
 
 
 ### Live link
