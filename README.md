@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Activities-List
+# Draggable-To-Do-List
 
 A Javascript app that allows the user to input, through an input field, his/her task to be done,
 
