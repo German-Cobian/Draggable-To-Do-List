@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+.disposition-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 body {
   background-color: rgb(236, 234, 231);
 }
@@ -11,9 +17,6 @@ body {
 }
 
 #todo-heading {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   border-bottom: black 1px solid;
 }
@@ -40,9 +43,6 @@ ul {
 }
 
 li {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   list-style: none;
   width: 100%;
   border-bottom: #d9d9d9 1px solid;
@@ -51,9 +51,6 @@ li {
 }
 
 div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 

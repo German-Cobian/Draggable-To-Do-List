@@ -17,6 +17,7 @@ const toDoList = () => {
 
   const heading = () => {
     const li = document.createElement('li');
+    li.classList.add('disposition-row');
     li.id = 'todo-heading';
     const h3 = document.createElement('h3');
     h3.textContent = 'Today\'s To Do';
@@ -36,11 +37,13 @@ const toDoList = () => {
   // Section that displays activities
   const renderList = (activity) => {
     const li = document.createElement('li');
+    li.classList.add('disposition-row');
     li.classList.add('draggable'); // ft-2
     li.setAttribute('activity', activity.index); // ft-2
     li.draggable = true; // ft-2
 
     const div = document.createElement('div');
+    div.classList.add('disposition-row');
 
     const input = document.createElement('input');
     input.classList.add('completed'); // ft-2
